@@ -1,0 +1,158 @@
+/* ======================================================
+   SARATHI — LEAFLET OVERRIDES (FINAL)
+   Dedicated Map Styling Layer
+   Isolated + Performance-Optimized
+====================================================== */
+
+
+/* ======================================================
+   MARKER — CIVILIZATIONAL NODE
+====================================================== */
+
+.civil-map-marker-wrapper {
+  position: relative;
+  transform: translateZ(0);
+}
+
+/* Core Node */
+
+.civil-map-marker-inner {
+  width: 46px;
+  height: 46px;
+  border-radius: 9999px;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    #1F2937,
+    #0B0F19
+  );
+
+  border: 1px solid #D4AF37;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #D4AF37;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  box-shadow:
+    0 0 18px rgba(212,175,55,0.35),
+    inset 0 0 10px rgba(212,175,55,0.08);
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+/* Hover Elevation */
+
+.civil-map-marker-inner:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 32px rgba(212,175,55,0.6),
+    inset 0 0 14px rgba(212,175,55,0.15);
+}
+
+
+/* ======================================================
+   PULSE AURA
+====================================================== */
+
+.civil-map-marker-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(212,175,55,0.6);
+  animation: pulseAura 3s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes pulseAura {
+  0%   { transform: scale(1); opacity: 0.6; }
+  70%  { transform: scale(2); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+/* ======================================================
+   POLYLINE — SACRED CONTINUITY
+   (Reduced double-glow for performance)
+====================================================== */
+
+.leaflet-overlay-pane path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  filter: drop-shadow(
+    0 0 10px rgba(212,175,55,0.45)
+  );
+}
+
+
+/* ======================================================
+   POPUP — DARK GLASS PANEL
+====================================================== */
+
+.leaflet-popup-content-wrapper {
+  background: linear-gradient(
+    135deg,
+    #0F172A,
+    #111827
+  );
+
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+
+  color: #FFFFFF;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.65);
+
+  backdrop-filter: blur(12px);
+  padding: 10px 14px;
+}
+
+.leaflet-popup-tip {
+  background: #0F172A;
+  border: none;
+}
+
+.civil-map-popup h4 {
+  font-weight: 600;
+  color: #D4AF37;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.civil-map-popup p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+}
+
+
+/* ======================================================
+   MAP FOUNDATION
+====================================================== */
+
+.leaflet-container {
+  background: #0B0F19;
+}
+
+
+/* ======================================================
+   ZOOM CONTROLS — REFINED
+====================================================== */
+
+.leaflet-control-zoom a {
+  background: rgba(17,24,39,0.92);
+  color: #D4AF37;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background 200ms ease;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #111827;
+}

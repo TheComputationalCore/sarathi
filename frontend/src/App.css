@@ -1,0 +1,447 @@
+/* =========================================================
+   SARATHI — PUBLIC EXPERIENCE LAYER (FINAL)
+   Cinematic Civilizational Authority
+   Tailwind-Aligned + Token Cleaned
+========================================================= */
+
+
+/* =========================================================
+   NAVBAR VISUAL ONLY
+========================================================= */
+
+.elite-navbar {
+  backdrop-filter: blur(18px);
+  background: rgba(11, 15, 25, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 300ms ease, box-shadow 300ms ease;
+}
+
+.elite-navbar.scrolled {
+  background: rgba(11, 15, 25, 0.96);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Brand */
+
+.brand-name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #D4AF37;
+  letter-spacing: -0.01em;
+}
+
+.brand-tagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.civil-hero-elite {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.5rem;
+
+  background:
+    radial-gradient(circle at 50% 35%, rgba(212,175,55,0.14), transparent 55%),
+    radial-gradient(circle at 20% 0%, rgba(212,175,55,0.06), transparent 60%),
+    #0B0F19;
+}
+
+.civil-hero-title {
+  margin-bottom: 1.5rem;
+}
+
+.civil-hero-subtitle {
+  max-width: 720px;
+  margin: 0 auto 2rem auto;
+  color: rgba(255,255,255,0.6);
+}
+
+.civil-hero-cta {
+  padding: 16px 44px;
+  border-radius: 999px;
+  border: 1px solid #D4AF37;
+  background: transparent;
+  color: #D4AF37;
+  letter-spacing: 0.06em;
+  transition: all 300ms ease;
+}
+
+.civil-hero-cta:hover {
+  background: #D4AF37;
+  color: #0B0F19;
+  box-shadow: 0 0 40px rgba(212,175,55,0.35);
+  transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.app-loader {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0B0F19;
+}
+
+
+/* =========================================================
+   SECTION STRUCTURE
+========================================================= */
+
+.civil-section-block {
+  padding: 6rem 0;
+}
+
+.civil-feedback-block {
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.civil-feedback-card {
+  text-align: center;
+  background: rgba(255,255,255,0.03);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  max-width: 600px;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+}
+
+.civil-feedback-card.error {
+  border: 1px solid rgba(239,68,68,0.4);
+}
+
+
+/* =========================================================
+   RESULT GRID
+========================================================= */
+
+.civil-result-section {
+  padding: 6rem 0;
+}
+
+.civil-result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .civil-result-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.civil-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(212,175,55,0.5),
+    transparent
+  );
+  margin: 4rem 0;
+}
+
+.civil-travel-cta {
+  text-align: center;
+}
+
+.civil-travel-button {
+  padding: 18px 56px;
+  border-radius: 999px;
+  border: 1px solid #D4AF37;
+  background: transparent;
+  color: #D4AF37;
+  letter-spacing: 0.08em;
+  transition: all 300ms ease;
+}
+
+.civil-travel-button:hover {
+  background: #D4AF37;
+  color: #0B0F19;
+  box-shadow: 0 0 40px rgba(212,175,55,0.35);
+  transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   THEME SELECTOR
+========================================================= */
+
+.civil-theme-section {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.civil-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+}
+
+.civil-theme-card {
+  background: rgba(255,255,255,0.03);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 300ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.civil-theme-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212,175,55,0.6);
+  box-shadow: 0 0 40px rgba(212,175,55,0.2);
+}
+
+.civil-theme-card.selected {
+  border: 1px solid #D4AF37;
+  box-shadow: 0 0 40px rgba(212,175,55,0.25);
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.civil-timeline-wrapper {
+  position: relative;
+  padding-left: 60px;
+}
+
+.civil-timeline-spine {
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(212,175,55,0.5),
+    transparent
+  );
+}
+
+.civil-timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.civil-timeline-marker {
+  position: absolute;
+  left: -60px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #111827;
+  border: 1px solid #D4AF37;
+  color: #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.civil-map-container {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.civil-map-instance {
+  height: 560px;
+  width: 100%;
+  filter: contrast(1.05) brightness(0.95);
+}
+
+.leaflet-overlay-pane path {
+  filter: drop-shadow(0 0 8px rgba(212,175,55,0.5));
+}
+
+
+/* =========================================================
+   MAP MARKER
+========================================================= */
+
+.civil-map-marker-wrapper {
+  position: relative;
+}
+
+.civil-map-marker-inner {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #111827;
+  border: 1px solid #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4AF37;
+  font-weight: 600;
+  box-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+.civil-map-marker-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.6);
+  animation: pulseMap 2.5s infinite ease-out;
+}
+
+@keyframes pulseMap {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.leaflet-popup-content-wrapper {
+  background: #0F172A;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  color: white;
+}
+
+.leaflet-popup-tip {
+  background: #0F172A;
+}
+
+.civil-map-popup h4 {
+  margin-bottom: 6px;
+  color: #D4AF37;
+  font-weight: 600;
+}
+
+.civil-map-popup p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* =========================================================
+   ELITE ADMIN POLISH LAYER
+   Executive Motion + Depth Refinement
+========================================================= */
+
+/* Page reveal */
+.admin-page {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Card hover intelligence */
+.card,
+.bg-brand-elevated {
+  transition: all 0.3s ease;
+}
+
+.card:hover,
+.bg-brand-elevated:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.55),
+    0 0 30px rgba(212,175,55,0.08);
+}
+
+/* Table refinement */
+.table-modern {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-modern thead {
+  background: rgba(255,255,255,0.03);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: #9CA3AF;
+}
+
+.table-modern th,
+.table-modern td {
+  padding: 16px 18px;
+}
+
+.table-modern tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.25s ease;
+}
+
+.table-modern tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Status badge refinement */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.status-badge.confirmed {
+  background: rgba(34,197,94,0.15);
+  color: #22C55E;
+}
+
+.status-badge.cancelled {
+  background: rgba(239,68,68,0.15);
+  color: #EF4444;
+}
+
+.status-badge.payment_pending,
+.status-badge.pending {
+  background: rgba(212,175,55,0.15);
+  color: #D4AF37;
+}
+
+/* Modal animation */
+.admin-modal-overlay {
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.admin-modal {
+  animation: popIn 0.35s ease forwards;
+}
+
+/* Gold subtle glow focus */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+}
+
+.journey-path {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.7));
+}

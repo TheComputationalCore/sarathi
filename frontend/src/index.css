@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   SARATHI — DESIGN SYSTEM FOUNDATION
+   Global Tokens + Structural Stability
+========================================================= */
+
+@layer base {
+
+  /* ---------- ROOT LAYOUT ---------- */
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+  @apply text-white font-sans antialiased;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(circle at 50% 30%, rgba(212,175,55,0.12), transparent 55%),
+    radial-gradient(circle at 10% -20%, rgba(212,175,55,0.08), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(22,30,46,0.8), transparent 55%),
+    linear-gradient(
+      135deg,
+      #000000 0%,
+      #0B0F19 40%,
+      #000000 100%
+    );
+}
+
+  /* ---------- TYPOGRAPHY ---------- */
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* ---------- INTERACTIONS ---------- */
+
+  button {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+
+  input, select, textarea {
+    @apply transition-all duration-300;
+  }
+
+  /* ---------- FOCUS ACCESSIBILITY ---------- */
+
+  :focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+  }
+
+  /* ---------- TEXT SELECTION ---------- */
+
+  ::selection {
+    background: rgba(212,175,55,0.35);
+    color: #000;
+  }
+}
+
+
+/* =========================================================
+   REUSABLE COMPONENT UTILITIES
+========================================================= */
+
+@layer components {
+
+  /* ---------- BUTTONS ---------- */
+
+  .btn-primary {
+  @apply px-6 py-3 rounded-full border border-brand-gold text-brand-gold
+         hover:bg-brand-gold hover:text-black
+         shadow-glow transition-all duration-300 tracking-wide;
+}
+
+  .btn-ghost {
+    @apply px-6 py-3 rounded-full border border-white/20
+           hover:border-brand-gold hover:text-brand-gold;
+  }
+
+  .btn-solid-gold {
+    @apply px-6 py-3 rounded-full bg-brand-gold text-black
+           hover:opacity-90 shadow-glow;
+  }
+
+  /* ---------- INPUTS ---------- */
+
+  .input-modern {
+  @apply w-full bg-black/60 backdrop-blur-lg
+         border border-white/10
+         rounded-2xl px-5 py-4
+         text-white
+         focus:outline-none focus:ring-2 focus:ring-brand-gold
+         transition-all duration-300;
+}
+  
+
+  /* ---------- CARDS ---------- */
+
+  .card-elevated {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.75rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+  transition: all 0.3s ease;
+}
+
+.card-elevated:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212,175,55,0.5);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.65),
+    0 0 40px rgba(212,175,55,0.15);
+}
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10
+           rounded-2xl shadow-elevated;
+  }
+
+  /* ---------- LAYOUT HELPERS ---------- */
+
+  .container-elite {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  .section-padding {
+    @apply py-20;
+  }
+
+  /* ---------- TYPOGRAPHY HELPERS ---------- */
+
+  .heading-xl {
+    @apply text-4xl md:text-5xl font-serif;
+  }
+
+  .heading-lg {
+    @apply text-3xl font-serif;
+  }
+
+  .body-lg {
+    @apply text-gray-400 text-lg;
+  }
+}
+
+
+/* =========================================================
+   SCROLLBAR SYSTEM
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212,175,55,0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212,175,55,0.6);
+}
+
+
+/* =========================================================
+   GLOBAL ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
