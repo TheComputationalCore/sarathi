@@ -71,6 +71,7 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) {
+        ensureThemesExist(); 
 
         if (bootstrapAdminEnabled) {
             if (bootstrapAdminEmail == null || bootstrapAdminEmail.isBlank()
@@ -109,6 +110,38 @@ public class DataInitializer implements CommandLineRunner {
         ensureThemeCircuitsAndBusCoverage();
         ensureYatraPointThemeMappings();
     }
+
+    // =========================================================
+// 🔥 ENSURE THEMES EXIST (PRODUCTION SAFE)
+// =========================================================
+private void ensureThemesExist() {
+
+    if (themeRepository.count() > 0) {
+        return; // Already seeded
+    }
+
+    logger.info("Seeding initial civilizational themes...");
+
+    List<String> themeNames = List.of(
+            "Sacred Geography",
+            "Temple Architecture",
+            "Ancient Universities",
+            "Indic Science & Mathematics",
+            "Civilizational Capitals",
+            "Bhakti Movement",
+            "Maritime Civilizations",
+            "Silk Route Bharat"
+    );
+
+    for (String name : themeNames) {
+        Theme theme = new Theme();
+        theme.setName(name);
+        theme.setDescription(name + " dimension of the civilizational journey.");
+        themeRepository.save(theme);
+    }
+
+    logger.info("Themes seeded successfully.");
+}
 
     private void ensureThemeCircuitsAndBusCoverage() {
         List<Theme> allThemes = themeRepository.findAll();
