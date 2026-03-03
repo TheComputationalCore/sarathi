@@ -158,29 +158,40 @@ private void ensureYatraPointsExist() {
 
     List<YatraPoint> points = List.of(
 
-            buildPoint("kashi-vishwanath", "Kashi Vishwanath", "Varanasi"),
-            buildPoint("ujjain-mahakal", "Mahakaleshwar Jyotirlinga", "Ujjain"),
-            buildPoint("rameshwaram-temple", "Ramanathaswamy Temple", "Rameshwaram"),
-            buildPoint("somnath-temple", "Somnath Temple", "Gujarat"),
-            buildPoint("mahabalipuram-shore-temple", "Shore Temple", "Mahabalipuram"),
-            buildPoint("nalanda-mahavihara", "Nalanda Mahavihara", "Bihar"),
-            buildPoint("takshashila", "Takshashila University", "Taxila"),
-            buildPoint("pataliputra-patna", "Pataliputra", "Patna")
+        buildPoint("kashi-vishwanath", "Kashi Vishwanath", 25.3109, 83.0107),
+        buildPoint("ujjain-mahakal", "Mahakaleshwar Jyotirlinga", 23.1828, 75.7680),
+        buildPoint("rameshwaram-temple", "Ramanathaswamy Temple", 9.2881, 79.3174),
+        buildPoint("somnath-temple", "Somnath Temple", 20.8880, 70.4012),
+        buildPoint("mahabalipuram-shore-temple", "Shore Temple", 12.6165, 80.1926),
+        buildPoint("nalanda-mahavihara", "Nalanda Mahavihara", 25.1367, 85.4431),
+        buildPoint("takshashila", "Takshashila University", 33.7456, 72.7867),
+        buildPoint("pataliputra-patna", "Pataliputra", 25.5941, 85.1376)
 
-    );
+);
 
     yatraPointRepository.saveAll(points);
 
     logger.info("YatraPoints seeded successfully.");
 }
 
-private YatraPoint buildPoint(String slug, String name, String location) {
-    YatraPoint point = new YatraPoint();
-    point.setSlug(slug);
-    point.setName(name);
-    point.setLocation(location);
-    point.setDescription(name + " – a civilizational heritage node.");
-    return point;
+private YatraPoint buildPoint(
+        String slug,
+        String name,
+        double latitude,
+        double longitude
+) {
+    return YatraPoint.builder()
+            .slug(slug)
+            .name(name)
+            .latitude(latitude)
+            .longitude(longitude)
+            .shortHistory(name + " – a civilizational heritage node.")
+            .recommendedZoomLevel(6)
+            .popularityScore(10)
+            .culturalSignificanceScore(70)
+            .metaDescription(name + " heritage site")
+            .active(true)
+            .build();
 }
 
     private void ensureThemeCircuitsAndBusCoverage() {
