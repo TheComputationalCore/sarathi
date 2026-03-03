@@ -12,11 +12,12 @@ function resolveBaseUrl() {
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1";
 
-  if (!isLocalhost) {
-    return `${window.location.origin}/api`;
+  if (isLocalhost) {
+    return "http://localhost:8082/api";
   }
 
-  return "http://localhost:8082/api";
+  // fallback safety (should never be used in prod)
+  return "https://sarathi-8fs9.onrender.com/api";
 }
 
 const BASE_URL = resolveBaseUrl();
