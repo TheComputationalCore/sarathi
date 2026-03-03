@@ -72,6 +72,7 @@ public class DataInitializer implements CommandLineRunner {
     @Transactional
     public void run(String... args) {
         ensureThemesExist(); 
+        ensureYatraPointsExist(); 
 
         if (bootstrapAdminEnabled) {
             if (bootstrapAdminEmail == null || bootstrapAdminEmail.isBlank()
@@ -115,6 +116,7 @@ public class DataInitializer implements CommandLineRunner {
 // 🔥 ENSURE THEMES EXIST (PRODUCTION SAFE)
 // =========================================================
 private void ensureThemesExist() {
+    
 
     if (themeRepository.count() > 0) {
         return; // Already seeded
@@ -141,6 +143,44 @@ private void ensureThemesExist() {
     }
 
     logger.info("Themes seeded successfully.");
+}
+
+    // =========================================================
+// 🔥 ENSURE YATRA POINTS EXIST (PRODUCTION SAFE)
+// =========================================================
+private void ensureYatraPointsExist() {
+
+    if (yatraPointRepository.count() > 0) {
+        return; // Already seeded
+    }
+
+    logger.info("Seeding initial heritage nodes (YatraPoints)...");
+
+    List<YatraPoint> points = List.of(
+
+            buildPoint("kashi-vishwanath", "Kashi Vishwanath", "Varanasi"),
+            buildPoint("ujjain-mahakal", "Mahakaleshwar Jyotirlinga", "Ujjain"),
+            buildPoint("rameshwaram-temple", "Ramanathaswamy Temple", "Rameshwaram"),
+            buildPoint("somnath-temple", "Somnath Temple", "Gujarat"),
+            buildPoint("mahabalipuram-shore-temple", "Shore Temple", "Mahabalipuram"),
+            buildPoint("nalanda-mahavihara", "Nalanda Mahavihara", "Bihar"),
+            buildPoint("takshashila", "Takshashila University", "Taxila"),
+            buildPoint("pataliputra-patna", "Pataliputra", "Patna")
+
+    );
+
+    yatraPointRepository.saveAll(points);
+
+    logger.info("YatraPoints seeded successfully.");
+}
+
+private YatraPoint buildPoint(String slug, String name, String location) {
+    YatraPoint point = new YatraPoint();
+    point.setSlug(slug);
+    point.setName(name);
+    point.setLocation(location);
+    point.setDescription(name + " – a civilizational heritage node.");
+    return point;
 }
 
     private void ensureThemeCircuitsAndBusCoverage() {
