@@ -2,14 +2,16 @@ name: Sarathi CI Pipeline
 
 on:
 push:
-branches: ["main"]
+branches:
+- main
 pull_request:
-branches: ["main"]
+branches:
+- main
 
 jobs:
 
 backend:
-name: Build Backend (Spring Boot)
+name: Build Backend
 runs-on: ubuntu-latest
 
 ```
@@ -17,19 +19,22 @@ steps:
   - name: Checkout repository
     uses: actions/checkout@v4
 
-  - name: Set up Java 21
+  - name: Setup Java
     uses: actions/setup-java@v4
     with:
       distribution: temurin
-      java-version: "21"
+      java-version: '17'
       cache: maven
 
-  - name: Build backend
-    run: mvn -B clean verify
+  - name: Make mvnw executable
+    run: chmod +x mvnw
+
+  - name: Build Spring Boot
+    run: ./mvnw -B clean verify
 ```
 
 frontend:
-name: Build Frontend (React)
+name: Build Frontend
 runs-on: ubuntu-latest
 
 ```
@@ -37,16 +42,16 @@ steps:
   - name: Checkout repository
     uses: actions/checkout@v4
 
-  - name: Set up Node.js
+  - name: Setup Node
     uses: actions/setup-node@v4
     with:
-      node-version: "20"
+      node-version: '20'
 
   - name: Install dependencies
     working-directory: frontend
-    run: npm ci
+    run: npm install
 
-  - name: Build frontend
+  - name: Build React
     working-directory: frontend
     run: npm run build
 ```
