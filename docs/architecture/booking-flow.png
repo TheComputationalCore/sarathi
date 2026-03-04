@@ -1,0 +1,22 @@
+User selects bus
+      │
+      ▼
+Seat availability request
+      │
+      ▼
+Backend checks database
+      │
+      ▼
+Seat temporarily locked
+      │
+      ▼
+Payment initiated (Razorpay)
+      │
+      ▼
+Payment verified
+      │
+      ▼
+Booking confirmed
+      │
+      ▼
+Ticket + QR generated
