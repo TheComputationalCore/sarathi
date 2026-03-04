@@ -1,0 +1,10 @@
+User A selects seat
+      │
+      ▼
+Backend locks seat
+      │
+      ▼
+WebSocket broadcast
+      │
+      ▼
+All clients update UI instantly
