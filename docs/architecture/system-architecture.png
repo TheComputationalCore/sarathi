@@ -1,0 +1,18 @@
+Users
+  │
+  ▼
+React Frontend
+  │
+  ▼
+Spring Boot API
+  │
+  ├── Authentication (JWT)
+  ├── Booking Service
+  ├── Payment Service
+  └── WebSocket Gateway
+  │
+  ▼
+PostgreSQL Database
+  │
+  ▼
+Redis Cache
