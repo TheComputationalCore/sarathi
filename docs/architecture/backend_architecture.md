@@ -105,7 +105,7 @@ SeatLockController
         │
 SeatLockService
         │
-Redis
+      Redis
 ```
 
 Locks expire after **5 minutes**.
