@@ -1,0 +1,19 @@
+User
+ │
+ │ 1..*
+ ▼
+Booking
+ │
+ │ *..1
+ ▼
+Bus
+ │
+ │ 1..*
+ ▼
+Seat
+
+Booking
+ │
+ │ 1..1
+ ▼
+Payment
