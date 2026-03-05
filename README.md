@@ -1,257 +1,232 @@
-# Sarathi
+# Sarathi 🚍
 
-### Civilizational Mobility Platform
+### Real-Time Bus Booking Platform
 
-Sarathi is a **production‑grade real‑time bus booking platform**
-designed to demonstrate modern full‑stack architecture, distributed
-system design, and cloud‑native deployment.
+Sarathi is a **production-grade real-time bus booking platform**
+designed to demonstrate modern **distributed system design,
+high-concurrency transaction handling, and cloud-native architecture**.
 
-The platform enables **real‑time seat booking, secure payments, ticket
-generation, and live availability updates**, simulating how modern
-transportation booking systems operate.
+The platform simulates how real-world transportation booking systems
+operate with **real-time seat availability, secure payments, and
+distributed service architecture**.
 
 ------------------------------------------------------------------------
 
-# Live Demo
+## 🚀 Live Demo
 
-Frontend Application\
+Frontend\
 https://sarathi-frontend-3zg8.onrender.com
 
 ------------------------------------------------------------------------
 
-# What Sarathi Demonstrates
+## ✨ Key Highlights
 
-Sarathi is built to illustrate how real‑world mobility platforms handle:
-
-• high‑concurrency seat reservations\
-• real‑time seat availability synchronization\
-• secure payment verification\
-• distributed service architecture\
-• reliable booking workflows
-
-The system architecture mirrors patterns used in **modern booking
-platforms and scalable web systems**.
+-   Real-time seat availability using **WebSockets**
+-   High-concurrency **seat reservation system**
+-   Distributed **booking transaction engine**
+-   Secure **JWT authentication**
+-   Integrated **Razorpay payment gateway**
+-   **Redis caching and locking**
+-   Cloud deployment using **Docker + Render**
+-   **Observability with Prometheus metrics**
 
 ------------------------------------------------------------------------
 
-# System Architecture
+## 🏗 System Architecture
 
-Sarathi follows a layered architecture separating presentation, service
-logic, and infrastructure.
+Sarathi follows a **layered distributed architecture** separating UI,
+application logic, and infrastructure.
 
-Client Layer\
-React Frontend
+Client Layer React Frontend
 
-Application Layer\
-Spring Boot Backend (REST + WebSocket)
+Application Layer Spring Boot REST APIs
 
-Service Layer\
-Booking Service\
-Payment Service\
-Authentication Service
+Service Layer Booking Service Payment Service Authentication Service
 
-Data Layer\
-PostgreSQL Database
+Data Layer PostgreSQL Database
 
-Cache Layer\
-Redis
+Cache Layer Redis
 
-Real‑Time Layer\
-WebSockets (STOMP)
+Realtime Layer WebSockets
 
 ------------------------------------------------------------------------
 
-# Architecture Diagrams
+## 🔁 Booking Flow
 
-Place diagrams inside:
-
-docs/architecture/
-
-System Architecture\
-docs/architecture/system-architecture.png
-
-Booking Flow\
-docs/architecture/booking-flow.png
-
-Realtime Seat Updates\
-docs/architecture/realtime-seat-flow.png
-
-Database Schema\
-docs/database/schema.png
+1.  User selects route and seats\
+2.  Client requests seat reservation\
+3.  Backend validates seat availability\
+4.  Redis temporarily locks selected seats\
+5.  Payment initiated via Razorpay\
+6.  Payment verified server-side\
+7.  Booking transaction committed\
+8.  Ticket generated and stored\
+9.  Real-time updates sent to all clients
 
 ------------------------------------------------------------------------
 
-# Technology Stack
+## ⚡ Real-Time Seat Synchronization
 
-## Backend
+Sarathi uses **WebSockets with STOMP protocol** for real-time seat
+updates.
 
-Spring Boot 3\
-Spring Security\
-Spring Data JPA\
-PostgreSQL\
-Redis\
-WebSockets (STOMP)\
-JWT Authentication\
-Resilience4j\
-Bucket4j Rate Limiting\
-Micrometer Monitoring\
-Prometheus Metrics\
-Razorpay Payment Integration
+When a seat is reserved:
 
-## Frontend
+-   Seat is temporarily locked in Redis
+-   WebSocket event broadcast to all clients
+-   UI updates instantly
+-   Other users cannot select the locked seat
 
-React\
-React Router\
-React Query\
-Zustand State Management\
-TailwindCSS\
-Framer Motion\
-Leaflet Maps\
-Axios\
-STOMP WebSocket Client
-
-## Infrastructure
-
-Render Cloud Platform\
-Docker\
-PostgreSQL\
-Redis
+This prevents **race conditions and double booking**.
 
 ------------------------------------------------------------------------
 
-# Core Features
+## 🔒 Concurrency Control Strategy
 
-## Real‑Time Seat Synchronization
+Seat booking is a high contention problem.
 
-Seat availability is synchronized using **WebSocket communication**.\
-All users receive instant updates when seats are locked or booked.
+Sarathi prevents double booking using:
 
-This prevents **double booking during concurrent reservations**.
+### Database Transactions
 
-------------------------------------------------------------------------
+`@Transactional`
 
-## Transactional Booking Engine
+Ensures atomic booking operations.
 
-Seat reservations use **database transactions** ensuring:
-
-• atomic booking operations\
-• prevention of race conditions\
-• consistent seat inventory
-
-------------------------------------------------------------------------
-
-## Secure Authentication
-
-The backend implements **JWT authentication using Spring Security**.
-
-All protected endpoints require valid tokens before accessing booking
-functionality.
-
-------------------------------------------------------------------------
-
-## Payment Integration
-
-Payments are processed using **Razorpay**.
-
-After payment:
-
-1.  payment is verified server‑side\
-2.  booking is confirmed\
-3.  ticket is generated
-
-------------------------------------------------------------------------
-
-## Digital Ticket Generation
-
-Every successful booking produces:
-
-• PDF ticket\
-• QR verification code\
-• booking record stored in database
-
-------------------------------------------------------------------------
-
-# Screenshots
-
-Store screenshots inside:
-
-docs/screenshots/
+### Redis Seat Locking
 
 Example:
 
-docs/screenshots/home.png\
-docs/screenshots/seat-selection.png\
-docs/screenshots/booking-success.png
+`SET seat_102 locked EX 120`
+
+Seats automatically release after timeout.
+
+### Optimistic Locking
+
+Booking verification ensures seat state consistency before final commit.
 
 ------------------------------------------------------------------------
 
-# Repository Structure
+## 🔐 Authentication & Security
 
-sarathi
+Sarathi uses **JWT-based authentication** implemented with Spring
+Security.
 
-src\
-controllers\
-services\
-repositories\
-entities\
-security
+Flow:
 
-frontend\
-public\
-src
-
-docs\
-architecture\
-database\
-screenshots
-
-Dockerfile\
-docker-compose.yml\
-pom.xml\
-README.md
+1.  User logs in
+2.  Server generates JWT token
+3.  Token sent in Authorization header
+4.  Backend validates token for protected APIs
 
 ------------------------------------------------------------------------
 
-# Local Development
+## 💳 Payment Processing
 
-## Clone Repository
+Payments are handled using **Razorpay integration**.
 
-git clone https://github.com/TheComputationalCore/sarathi.git\
-cd sarathi
+Workflow:
+
+1.  Backend creates Razorpay order
+2.  Frontend opens payment gateway
+3.  User completes payment
+4.  Razorpay sends payment response
+5.  Backend verifies payment signature
+6.  Booking confirmed
 
 ------------------------------------------------------------------------
 
-# Backend Setup
+## 🎟 Ticket Generation
+
+After successful payment:
+
+-   Booking record stored in database
+-   Ticket generated as **PDF**
+-   QR code created for verification
+-   Booking confirmation returned to user
+
+------------------------------------------------------------------------
+
+## 🛠 Technology Stack
+
+### Backend
+
+-   Spring Boot 3
+-   Spring Security
+-   Spring Data JPA
+-   PostgreSQL
+-   Redis
+-   WebSockets (STOMP)
+-   JWT Authentication
+-   Resilience4j
+-   Bucket4j Rate Limiting
+-   Micrometer
+-   Prometheus
+-   Razorpay
+
+### Frontend
+
+-   React
+-   React Router
+-   React Query
+-   Zustand
+-   TailwindCSS
+-   Framer Motion
+-   Leaflet Maps
+-   Axios
+-   STOMP WebSocket Client
+
+### Infrastructure
+
+-   Docker
+-   Render Cloud
+-   PostgreSQL
+-   Redis
+
+------------------------------------------------------------------------
+
+## 📂 Repository Structure
+
+sarathi │ ├── src │ ├── controllers │ ├── services │ ├── repositories │
+├── entities │ └── security │ ├── frontend │ ├── public │ └── src │ ├──
+docs │ ├── architecture │ ├── database │ └── screenshots │ ├──
+Dockerfile ├── docker-compose.yml ├── pom.xml └── README.md
+
+------------------------------------------------------------------------
+
+## ⚙️ Local Development
+
+### Clone Repository
+
+git clone https://github.com/TheComputationalCore/sarathi.git cd sarathi
+
+### Backend Setup
 
 Requirements
 
-Java 17\
-PostgreSQL\
-Redis
+-   Java 17
+-   PostgreSQL
+-   Redis
 
 Run backend
 
 ./mvnw spring-boot:run
 
-Backend runs on
+Backend runs at
 
 http://localhost:8080
 
-------------------------------------------------------------------------
+### Frontend Setup
 
-# Frontend Setup
+cd frontend npm install npm start
 
-cd frontend\
-npm install\
-npm start
-
-Frontend runs on
+Frontend runs at
 
 http://localhost:3000
 
 ------------------------------------------------------------------------
 
-# Environment Variables
+## 🔑 Environment Variables
 
 DATABASE_URL\
 REDIS_URL\
@@ -261,7 +236,7 @@ RAZORPAY_SECRET
 
 ------------------------------------------------------------------------
 
-# Deployment
+## 🚀 Deployment
 
 Sarathi is deployed using **Render Cloud Infrastructure**.
 
@@ -272,45 +247,29 @@ Cache → Redis
 
 ------------------------------------------------------------------------
 
-# Observability
+## 📈 Observability & Monitoring
 
-Metrics and monitoring provided through:
+Sarathi exposes metrics using:
 
-Spring Boot Actuator\
-Micrometer Prometheus integration
+-   Spring Boot Actuator
+-   Micrometer
+-   Prometheus
 
-------------------------------------------------------------------------
+Metrics include:
 
-# Documentation
-
-Technical documentation is available inside the docs directory.
-
-Architecture diagrams\
-API documentation\
-Database schema\
-Booking workflow diagrams
+-   request latency
+-   booking throughput
+-   error rates
+-   system health
 
 ------------------------------------------------------------------------
 
-# Contributing
-
-Contributions are welcome.
-
-Please read:
-
-CONTRIBUTING.md\
-CODE_OF_CONDUCT.md
-
-before submitting pull requests.
-
-------------------------------------------------------------------------
-
-# License
+## 📜 License
 
 MIT License
 
 ------------------------------------------------------------------------
 
-# Author
+## 👨‍💻 Author
 
-TheComputationalCore
+**TheComputationalCore**
