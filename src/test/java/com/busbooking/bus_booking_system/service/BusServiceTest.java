@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class BusServiceTest {
+class BusServiceTest extends IntegrationTestBase{
 
     @InjectMocks
     private BusService busService;
