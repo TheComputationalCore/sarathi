@@ -1,206 +1,378 @@
-# Sarathi 🚍
+# Sarathi
 
-### Real-Time Bus Booking Platform
+### Civilizational Mobility Platform
 
-Sarathi is a **production-grade real-time bus booking platform**
-designed to demonstrate modern **distributed system design,
-high-concurrency transaction handling, and cloud-native architecture**.
-
-The platform simulates how real-world transportation booking systems
-operate with **real-time seat availability, secure payments, and
-distributed service architecture**.
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/homepage1.png" width="90%">`{=html}
+```{=html}
+</p>
+```
 
 ------------------------------------------------------------------------
 
-## 🚀 Live Demo
+# 🚀 Sarathi --- Civilizational Mobility Platform
+
+![Java](https://img.shields.io/badge/Java-17%2B-orange?logo=java)
+![Spring
+Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?logo=springboot)
+![React](https://img.shields.io/badge/Frontend-React-blue?logo=react)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-blue?logo=postgresql)
+![Redis](https://img.shields.io/badge/Cache-Redis-red?logo=redis)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker)
+![Architecture](https://img.shields.io/badge/Architecture-Distributed-blueviolet)
+![Realtime](https://img.shields.io/badge/Realtime-WebSockets-green)
+![Payments](https://img.shields.io/badge/Payments-Razorpay-yellow)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+Sarathi is a **production-grade real-time bus booking platform**
+designed to model **civilizational mobility networks** connecting
+heritage circuits, pilgrimage routes, and cultural destinations.
+
+The platform demonstrates **distributed system design patterns** used in
+modern booking infrastructure.
+
+------------------------------------------------------------------------
+
+# 🌐 Live Demo
 
 Frontend\
 https://sarathi-frontend-3zg8.onrender.com
 
 ------------------------------------------------------------------------
 
-## ✨ Key Highlights
+# 📌 Table of Contents
 
--   Real-time seat availability using **WebSockets**
--   High-concurrency **seat reservation system**
--   Distributed **booking transaction engine**
--   Secure **JWT authentication**
--   Integrated **Razorpay payment gateway**
--   **Redis caching and locking**
--   Cloud deployment using **Docker + Render**
--   **Observability with Prometheus metrics**
-
-------------------------------------------------------------------------
-
-## 🏗 System Architecture
-
-Sarathi follows a **layered distributed architecture** separating UI,
-application logic, and infrastructure.
-
-Client Layer React Frontend
-
-Application Layer Spring Boot REST APIs
-
-Service Layer Booking Service Payment Service Authentication Service
-
-Data Layer PostgreSQL Database
-
-Cache Layer Redis
-
-Realtime Layer WebSockets
+-   Overview
+-   Key Features
+-   Screenshots
+-   Architecture
+-   Booking Flow
+-   Real-Time Seat Locking
+-   Domain Model
+-   Database Schema
+-   API Documentation
+-   Technology Stack
+-   Project Structure
+-   Deployment
+-   Running Locally
+-   License
 
 ------------------------------------------------------------------------
 
-## 🔁 Booking Flow
+# 🧠 Overview
 
-1.  User selects route and seats\
-2.  Client requests seat reservation\
-3.  Backend validates seat availability\
-4.  Redis temporarily locks selected seats\
-5.  Payment initiated via Razorpay\
-6.  Payment verified server-side\
-7.  Booking transaction committed\
-8.  Ticket generated and stored\
-9.  Real-time updates sent to all clients
+Sarathi is designed as a **heritage mobility infrastructure**.
 
-------------------------------------------------------------------------
+Instead of modeling simple routes, the system represents:
 
-## ⚡ Real-Time Seat Synchronization
+    Circuit → Route → Heritage Nodes → Travelers
 
-Sarathi uses **WebSockets with STOMP protocol** for real-time seat
-updates.
+This enables the platform to support:
 
-When a seat is reserved:
+-   pilgrimage logistics
+-   heritage tourism networks
+-   cultural route exploration
+-   real-time seat booking infrastructure
 
--   Seat is temporarily locked in Redis
--   WebSocket event broadcast to all clients
--   UI updates instantly
--   Other users cannot select the locked seat
-
-This prevents **race conditions and double booking**.
+The system architecture mirrors patterns used in **high-scale booking
+systems**.
 
 ------------------------------------------------------------------------
 
-## 🔒 Concurrency Control Strategy
+# ✨ Key Features
 
-Seat booking is a high contention problem.
+### 🚍 Intelligent Route Exploration
 
-Sarathi prevents double booking using:
+Users can explore **heritage routes and circuits** across culturally
+significant locations.
 
-### Database Transactions
+### 🎟 Real-Time Seat Booking
 
-`@Transactional`
+Seats are locked using **Redis concurrency control**, preventing double
+booking during payment.
 
-Ensures atomic booking operations.
+### ⚡ Live Seat Updates
 
-### Redis Seat Locking
+WebSockets broadcast seat changes to all users.
 
-Example:
+### 💳 Secure Payments
 
-`SET seat_102 locked EX 120`
+Payments are processed through **Razorpay** with server-side
+verification.
 
-Seats automatically release after timeout.
+### 📄 Digital Ticket Generation
 
-### Optimistic Locking
+Successful bookings generate: - PDF tickets - QR codes - booking
+confirmation
 
-Booking verification ensures seat state consistency before final commit.
+### 🛠 Admin Control Panel
 
-------------------------------------------------------------------------
-
-## 🔐 Authentication & Security
-
-Sarathi uses **JWT-based authentication** implemented with Spring
-Security.
-
-Flow:
-
-1.  User logs in
-2.  Server generates JWT token
-3.  Token sent in Authorization header
-4.  Backend validates token for protected APIs
+Admins can manage: - routes - users - bookings - system operations
 
 ------------------------------------------------------------------------
 
-## 💳 Payment Processing
+# 🖼 Screenshots
 
-Payments are handled using **Razorpay integration**.
+## Homepage
 
-Workflow:
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/homepage1.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Theme Selection
 
-1.  Backend creates Razorpay order
-2.  Frontend opens payment gateway
-3.  User completes payment
-4.  Razorpay sends payment response
-5.  Backend verifies payment signature
-6.  Booking confirmed
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/theme.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Available Routes
+
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/AvailableJourneys.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Seat Selection
+
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/seatselection.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Seat Locking
+
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/seatlocking.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Payment Gateway
+
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/paymentoptions.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Payment Success
+
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/payment.png" width="80%">`{=html}
+```{=html}
+</p>
+```
+## Ticket Generation
+
+```{=html}
+<p align="center">
+```
+`<img src="docs/screenshots/ticketpdf.png" width="70%">`{=html}
+```{=html}
+</p>
+```
 
 ------------------------------------------------------------------------
 
-## 🎟 Ticket Generation
+# 🏗 System Architecture
 
-After successful payment:
-
--   Booking record stored in database
--   Ticket generated as **PDF**
--   QR code created for verification
--   Booking confirmation returned to user
+    React Frontend
+           │
+           ▼
+    Spring Boot Backend API
+           │
+     ┌─────┴───────────────┐
+     │                     │
+     ▼                     ▼
+    PostgreSQL           Redis
+    Primary Data         Seat Locks
 
 ------------------------------------------------------------------------
 
-## 🛠 Technology Stack
+# 📡 Real-Time Seat Updates
 
-### Backend
+Seat availability is synchronized using **WebSockets**.
+
+    /topic/seat-updates
+
+All users receive instant updates when seats are locked or booked.
+
+------------------------------------------------------------------------
+
+# 🔒 Seat Locking Strategy
+
+Example Redis lock:
+
+    SET seat:bus_12:seat_22 locked EX 300
+
+-   Lock expires after **5 minutes**
+-   Prevents **double booking during payment**
+
+------------------------------------------------------------------------
+
+# 🔁 Booking Flow
+
+    User selects seats
+           │
+           ▼
+    Seat Lock (Redis)
+           │
+           ▼
+    Booking Creation
+           │
+           ▼
+    Razorpay Order
+           │
+           ▼
+    Payment Verification
+           │
+           ▼
+    Booking Confirmed
+           │
+           ▼
+    Ticket Generated
+
+------------------------------------------------------------------------
+
+# 🧭 Domain Model
+
+``` mermaid
+erDiagram
+User ||--o{ Booking : makes
+Booking ||--|{ Passenger : contains
+Booking ||--|| Payment : has
+
+Bus ||--o{ BusSchedule : operates
+Bus ||--o{ RouteStop : contains
+Bus }o--|| Circuit : belongs_to
+
+BusSchedule ||--o{ Passenger : holds
+
+RouteStop }o--|| YatraPoint : references
+
+YatraPoint }o--o{ Theme : categorized_by
+YatraPoint }o--o{ Era : belongs_to
+```
+
+------------------------------------------------------------------------
+
+# 🗄 Database Schema
+
+Database stores:
+
+-   users
+-   circuits
+-   buses
+-   schedules
+-   route stops
+-   heritage nodes
+-   bookings
+-   payments
+
+------------------------------------------------------------------------
+
+# 📘 API Documentation
+
+Detailed API docs:
+
+    docs/api/api_reference.md
+
+------------------------------------------------------------------------
+
+# 🛠 Technology Stack
+
+## Backend
 
 -   Spring Boot 3
 -   Spring Security
 -   Spring Data JPA
 -   PostgreSQL
 -   Redis
--   WebSockets (STOMP)
--   JWT Authentication
--   Resilience4j
--   Bucket4j Rate Limiting
--   Micrometer
--   Prometheus
+-   WebSockets
 -   Razorpay
+-   JWT Authentication
 
-### Frontend
+## Frontend
 
 -   React
 -   React Router
--   React Query
--   Zustand
 -   TailwindCSS
+-   Axios
+-   Zustand
 -   Framer Motion
 -   Leaflet Maps
--   Axios
 -   STOMP WebSocket Client
 
-### Infrastructure
+## Infrastructure
 
 -   Docker
--   Render Cloud
--   PostgreSQL
+-   Render
+-   PostgreSQL (Neon)
 -   Redis
 
 ------------------------------------------------------------------------
 
-## 📂 Repository Structure
+# 📂 Project Structure
 
-sarathi │ ├── src │ ├── controllers │ ├── services │ ├── repositories │
-├── entities │ └── security │ ├── frontend │ ├── public │ └── src │ ├──
-docs │ ├── architecture │ ├── database │ └── screenshots │ ├──
-Dockerfile ├── docker-compose.yml ├── pom.xml └── README.md
+    sarathi
+    │
+    ├── frontend
+    │   └── src
+    │
+    ├── src
+    │   ├── controllers
+    │   ├── services
+    │   ├── repositories
+    │   ├── entities
+    │   └── security
+    │
+    ├── docs
+    │   ├── api
+    │   ├── architecture
+    │   ├── database
+    │   └── screenshots
+    │
+    ├── Dockerfile
+    ├── docker-compose.yml
+    └── README.md
 
 ------------------------------------------------------------------------
 
-## ⚙️ Local Development
+# 🚀 Deployment
 
-### Clone Repository
+Sarathi is deployed using **Render Cloud Infrastructure**.
 
-git clone https://github.com/TheComputationalCore/sarathi.git cd sarathi
+    Frontend → Render Static Site
+    Backend → Render Web Service
+    Database → PostgreSQL
+    Cache → Redis
 
-### Backend Setup
+------------------------------------------------------------------------
+
+# ⚙️ Running Locally
+
+Clone the repository:
+
+    git clone https://github.com/TheComputationalCore/sarathi.git
+    cd sarathi
+
+### Backend
 
 Requirements
 
@@ -208,68 +380,34 @@ Requirements
 -   PostgreSQL
 -   Redis
 
-Run backend
+Run backend:
 
-./mvnw spring-boot:run
+    ./mvnw spring-boot:run
 
-Backend runs at
+Backend runs at:
 
-http://localhost:8080
+    http://localhost:8080
 
-### Frontend Setup
+### Frontend
 
-cd frontend npm install npm start
+    cd frontend
+    npm install
+    npm start
 
-Frontend runs at
+Frontend runs at:
 
-http://localhost:3000
-
-------------------------------------------------------------------------
-
-## 🔑 Environment Variables
-
-DATABASE_URL\
-REDIS_URL\
-JWT_SECRET\
-RAZORPAY_KEY_ID\
-RAZORPAY_SECRET
+    http://localhost:3000
 
 ------------------------------------------------------------------------
 
-## 🚀 Deployment
-
-Sarathi is deployed using **Render Cloud Infrastructure**.
-
-Frontend → Render Static Site\
-Backend → Render Web Service\
-Database → PostgreSQL\
-Cache → Redis
-
-------------------------------------------------------------------------
-
-## 📈 Observability & Monitoring
-
-Sarathi exposes metrics using:
-
--   Spring Boot Actuator
--   Micrometer
--   Prometheus
-
-Metrics include:
-
--   request latency
--   booking throughput
--   error rates
--   system health
-
-------------------------------------------------------------------------
-
-## 📜 License
+# 📄 License
 
 MIT License
 
 ------------------------------------------------------------------------
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **TheComputationalCore**
+
+If you find this project interesting, please ⭐ the repository!
