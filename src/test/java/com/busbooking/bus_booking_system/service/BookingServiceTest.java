@@ -18,6 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+import com.busbooking.bus_booking_system.IntegrationTestBase;
 
 @ExtendWith(MockitoExtension.class)
 class BookingServiceTest extends IntegrationTestBase{
