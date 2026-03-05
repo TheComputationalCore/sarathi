@@ -8,9 +8,11 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @Testcontainers
+@ActiveProfiles("test")
 public abstract class IntegrationTestBase {
 
     @Container
