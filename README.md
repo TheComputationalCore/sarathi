@@ -1,16 +1,3 @@
-# Sarathi
-
-### Civilizational Mobility Platform
-
-```{=html}
-<p align="center">
-```
-`<img src="docs/screenshots/homepage1.png" width="90%">`{=html}
-```{=html}
-</p>
-```
-
-------------------------------------------------------------------------
 
 # 🚀 Sarathi --- Civilizational Mobility Platform
 
@@ -117,76 +104,89 @@ Admins can manage: - routes - users - bookings - system operations
 
 ## Homepage
 
-```{=html}
 <p align="center">
-```
-`<img src="docs/screenshots/homepage1.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/homepage1.png" width="85%">
 </p>
-```
+
+---
+
+## Login
+
+<p align="center">
+<img src="docs/screenshots/login.png" width="75%">
+</p>
+
+---
+
+## Register
+
+<p align="center">
+<img src="docs/screenshots/register.png" width="75%">
+</p>
+
+---
+
 ## Theme Selection
 
-```{=html}
 <p align="center">
-```
-`<img src="docs/screenshots/theme.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/theme.png" width="85%">
 </p>
-```
-## Available Routes
 
-```{=html}
+---
+
+## Available Journeys
+
 <p align="center">
-```
-`<img src="docs/screenshots/AvailableJourneys.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/AvailableJourneys.png" width="85%">
 </p>
-```
+
+---
+
 ## Seat Selection
 
-```{=html}
 <p align="center">
-```
-`<img src="docs/screenshots/seatselection.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/seatselection.png" width="85%">
 </p>
-```
+
+---
+
 ## Seat Locking
 
-```{=html}
 <p align="center">
-```
-`<img src="docs/screenshots/seatlocking.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/seatlocking.png" width="85%">
 </p>
-```
-## Payment Gateway
 
-```{=html}
+---
+
+## Payment Options
+
 <p align="center">
-```
-`<img src="docs/screenshots/paymentoptions.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/paymentoptions.png" width="85%">
 </p>
-```
+
+---
+
 ## Payment Success
 
-```{=html}
 <p align="center">
-```
-`<img src="docs/screenshots/payment.png" width="80%">`{=html}
-```{=html}
+<img src="docs/screenshots/payment.png" width="85%">
 </p>
-```
-## Ticket Generation
 
-```{=html}
+---
+
+## User Profile
+
 <p align="center">
-```
-`<img src="docs/screenshots/ticketpdf.png" width="70%">`{=html}
-```{=html}
+<img src="docs/screenshots/profile.png" width="85%">
 </p>
-```
+
+---
+
+## Ticket PDF
+
+<p align="center">
+<img src="docs/screenshots/ticketpdf.png" width="70%">
+</p>
 
 ------------------------------------------------------------------------
 
