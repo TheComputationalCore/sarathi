@@ -1,6 +1,7 @@
 
 # 🚀 Sarathi --- Civilizational Mobility Platform
 
+![CI](https://github.com/TheComputationalCore/sarathi/actions/workflows/ci.yml/badge.svg)
 ![Java](https://img.shields.io/badge/Java-17%2B-orange?logo=java)
 ![Spring
 Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?logo=springboot)
