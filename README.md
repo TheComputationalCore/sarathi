@@ -23,7 +23,7 @@ modern booking infrastructure.
 
 ------------------------------------------------------------------------
 
-# 🌐 Live Demo
+# 🌐 Live Deployment
 
 Frontend\
 https://sarathi-frontend-3zg8.onrender.com
