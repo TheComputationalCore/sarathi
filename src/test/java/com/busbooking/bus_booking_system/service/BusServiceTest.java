@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import com.busbooking.bus_booking_system.IntegrationTestBase;
 
 @ExtendWith(MockitoExtension.class)
 class BusServiceTest extends IntegrationTestBase{
