@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class BookingServiceTest {
+class BookingServiceTest extends IntegrationTestBase{
 
     @InjectMocks
     private BookingService bookingService;
